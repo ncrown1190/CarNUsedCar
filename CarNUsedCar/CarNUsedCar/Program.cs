@@ -5,9 +5,9 @@ Console.WriteLine("Welcome to Grant Chirpus’ Used Car Emporium!");
 
 Car.carList = new List<Car>()
 {
-    new ("Ford", "Focus", 2013, 20000.00),
-    new ("Chevy", "Cruze", 2013, 20000.00),
-    new ("Dodge", "Charger", 2013, 20000.00),
+    new ("Honda", "CRV", 2024, 34000.00),
+    new ("Toyota", "4Runner", 2024, 62000.00),
+    new ("Dodge", "Charger", 2023, 32000.00),
     new UsedCar("Ford", "Focus", 2013, 20000.00, 100000),
     new UsedCar("Chevy", "Cruze", 2013, 20000.00, 150000),
     new UsedCar("Dodge", "Charger", 2013, 20000.00, 120000),
@@ -19,7 +19,7 @@ while (runProgram)
     DisplayMenu();
 
     int menuChoice = -1;
-    while (menuChoice <= -1 || menuChoice >= Car.carList.Count + 4)
+    while (menuChoice <= -1 || menuChoice > Car.carList.Count + 2)
     {
 
         Console.Write($"Choose a menu option. 1 - {Car.carList.Count + 2}: ");
@@ -31,7 +31,7 @@ while (runProgram)
     }
 
     // buying car
-    if (menuChoice < Car.carList.Count)
+    if (menuChoice < Car.carList.Count +1)
     {
         Car carChoice = Car.carList[menuChoice - 1];
         if (BuyCar(carChoice) == true)
@@ -61,12 +61,12 @@ while (runProgram)
 }
 
 
-static bool BuyCar(Car c)
+static bool BuyCar(Car car)
 {
 
     Console.WriteLine("Would you like to buy this car? y/n");
 
-    Console.Write($"{c}: ");
+    Console.Write($"{car}: ");
     string buyChoice = Console.ReadLine();
     if (buyChoice == "y")
     {
